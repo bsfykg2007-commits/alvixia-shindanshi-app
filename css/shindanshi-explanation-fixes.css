@@ -1,0 +1,32 @@
+/* shindanshi explanation UI fixes v7.2 */
+
+/* Preserve line breaks in explanation text */
+.explanation-summary,
+.explanation-content,
+.explanation-detail,
+.answer-card,
+.answer-box,
+.explanation-box,
+.explanation-section {
+  white-space: pre-line;
+}
+
+/* Improve readability of answer/explanation area */
+.formula-block,
+.explanation-formula,
+.exam-point,
+.formula-example {
+  white-space: pre-line;
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  line-height: 1.75;
+}
+
+.choice-reason,
+.choiceReason {
+  white-space: pre-line;
+  line-height: 1.8;
+}

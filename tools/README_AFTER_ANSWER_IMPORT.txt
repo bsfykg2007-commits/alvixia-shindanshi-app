@@ -1,0 +1,1 @@
+正答・配点を反映した後、同梱のJSONにはdetailVersion=v3_choice_text_basedの具体解説が入っています。必要なら同じロジックで再生成してください。
