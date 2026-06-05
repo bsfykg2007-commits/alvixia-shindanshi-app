@@ -1,0 +1,36 @@
+name: バグ報告
+description: 表示崩れ、採点、学習履歴などの不具合を報告する
+title: "バグ: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 不具合の内容
+      description: 何が起きたかを具体的に書いてください。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      description: 年度、科目、問題番号、操作手順を書いてください。
+      placeholder: |
+        1. 令和○年を選択
+        2. ○○科目の第○問を開く
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する動作
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 利用環境
+      description: OS、ブラウザ、端末など
+    validations:
+      required: false

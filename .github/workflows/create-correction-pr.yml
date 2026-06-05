@@ -1,0 +1,53 @@
+name: Create correction PR from issue
+
+on:
+  issues:
+    types:
+      - opened
+      - labeled
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-pr:
+    if: contains(github.event.issue.title, '解答・解説修正提案')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Save issue body
+        run: |
+          cat > issue_body.md <<'BODY'
+          ${{ github.event.issue.body }}
+          BODY
+
+      - name: Apply proposed answer/explanation
+        env:
+          ISSUE_BODY_PATH: issue_body.md
+        run: python tools/apply_correction_issue.py
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: correction/issue-${{ github.event.issue.number }}
+          title: "解答・解説修正: Issue #${{ github.event.issue.number }}"
+          body: |
+            Issue #${{ github.event.issue.number }} の提案内容から自動作成したPRです。
+
+            管理者が内容を確認し、Mergeした場合のみ本番へ反映されます。
+          commit-message: "Apply answer explanation correction from issue #${{ github.event.issue.number }}"
+
+      - name: Comment result
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '修正提案からPull Requestを自動作成しました。管理者レビュー後、Mergeされた場合のみ反映されます。'
+            })

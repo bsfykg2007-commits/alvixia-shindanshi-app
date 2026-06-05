@@ -1,0 +1,30 @@
+name: UI改善提案
+description: 見やすさ、操作性、導線の改善を提案する
+title: "UI改善: "
+labels: ["ui", "enhancement"]
+body:
+  - type: textarea
+    id: target
+    attributes:
+      label: 改善したい画面・操作
+      description: どの画面のどの操作かを書いてください。
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: 現在の使いにくい点
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 改善案
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: スクリーンショット・参考URL
+    validations:
+      required: false

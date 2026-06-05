@@ -1,1 +1,83 @@
-﻿<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Alvixia 中小企業診断士 一次試験 過去問演習</title><link rel="stylesheet" href="css/style.css"></head><body><header class="hero"><div class="wrap"><p class="brand">Alvixia</p><h1>中小企業診断士 一次試験 過去問演習</h1><p>過去問・図表・解説を使って演習できます。</p></div></header><main class="wrap"><section id="setup" class="card"><h2>演習設定</h2><div class="grid"><label>年度<select id="yearSelect"></select></label><label>科目<select id="subjectSelect"></select></label><label>採点方式<select id="modeSelect"><option value="instant">1問ごとに答え合わせ</option><option value="batch">全問回答後に一括採点</option></select></label><label>出題範囲<select id="practiceSelect"><option value="all">通常演習</option><option value="wrong">間違い復習</option><option value="review">要復習のみ</option></select></label></div><div class="actions setup-actions"><button id="startBtn" class="primary">開始する</button><button id="resumeBtn" type="button" class="secondary hidden">途中から再開</button><button id="weaknessBtn" type="button" class="secondary">弱点分析</button><button id="clearHistoryBtn" type="button" class="ghost">履歴を消去</button></div><div id="learningStats" class="learning-stats"></div></section><section id="quiz" class="card hidden"><div class="progress"><span id="progressText"></span><span id="scoreText"></span></div><h2 id="qTitle"></h2><p id="qStatus" class="note"></p><pre id="qText"></pre><form id="choices"></form><div class="actions"><button id="prevBtn" type="button" class="secondary hidden">前の問題</button><button id="answerBtn" type="button" class="primary">回答する</button><button id="nextBtn" type="button" class="secondary hidden">次の問題</button><button id="finishBtn" type="button" class="primary hidden">結果を見る</button><button id="reviewBtn" type="button" class="secondary">要復習</button><button id="backBtn" type="button" class="secondary">設定に戻る</button></div><div id="feedback" class="feedback hidden"></div></section><section id="result" class="card hidden"><h2>結果</h2><div id="resultSummary"></div><div id="resultDetails"></div><button id="retryBtn" type="button" class="primary">もう一度解く</button><button id="resultBackBtn" type="button" class="secondary">設定に戻る</button></section></main><script src="js/app.js"></script></body></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Alvixia 中小企業診断士 一次試験 過去問演習</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="brand">Alvixia</p>
+      <h1>中小企業診断士 一次試験 過去問演習</h1>
+      <p>過去問・図表・解説を使って演習できます。</p>
+      <p><a class="hero-link" href="https://github.com/bsfykg2007-commits/alvixia-shindanshi-app/issues/new/choose" target="_blank" rel="noopener">サイト改善・機能追加を提案する</a></p>
+    </div>
+  </header>
+  <main class="wrap">
+    <section id="setup" class="card">
+      <h2>演習設定</h2>
+      <div class="grid">
+        <label>年度<select id="yearSelect"></select></label>
+        <label>科目<select id="subjectSelect"></select></label>
+        <label>採点方式<select id="modeSelect"><option value="instant">1問ごとに答え合わせ</option><option value="batch">全問回答後に一括採点</option></select></label>
+        <label>出題範囲<select id="practiceSelect"><option value="all">通常演習</option><option value="random">ランダム出題</option><option value="wrong">間違い復習</option><option value="review">要復習のみ</option></select></label>
+      </div>
+      <div class="actions setup-actions">
+        <button id="startBtn" class="primary">開始する</button>
+        <button id="resumeBtn" type="button" class="secondary hidden">途中から再開</button>
+        <button id="weaknessBtn" type="button" class="secondary">弱点分析</button>
+        <button id="clearHistoryBtn" type="button" class="ghost">履歴を消去</button>
+      </div>
+      <div id="learningStats" class="learning-stats"></div>
+    </section>
+
+    <section id="quiz" class="card hidden">
+      <div class="progress"><span id="progressText"></span><span id="scoreText"></span></div>
+      <h2 id="qTitle"></h2>
+      <p id="qStatus" class="note"></p>
+      <pre id="qText"></pre>
+      <form id="choices"></form>
+      <div class="actions">
+        <button id="prevBtn" type="button" class="secondary hidden">前の問題</button>
+        <button id="answerBtn" type="button" class="primary">回答する</button>
+        <button id="nextBtn" type="button" class="secondary hidden">次の問題</button>
+        <button id="finishBtn" type="button" class="primary hidden">結果を見る</button>
+        <button id="reviewBtn" type="button" class="secondary">要復習</button>
+        <button id="proposeBtn" type="button" class="ghost">解答・解説の修正を提案する</button>
+        <button id="backBtn" type="button" class="secondary">設定に戻る</button>
+      </div>
+      <div id="feedback" class="feedback hidden"></div>
+    </section>
+
+    <section id="proposal" class="card hidden">
+      <h2>解答・解説の修正提案</h2>
+      <div id="proposalReadonly"></div>
+      <div class="grid proposal-grid">
+        <label>修正後の解答<select id="proposedAnswer"></select></label>
+        <label>参考URL（任意）<input id="referenceUrl" type="url" placeholder="https://"></label>
+      </div>
+      <label>現在の解説（表示のみ）<textarea id="currentExplanation" readonly></textarea></label>
+      <label>修正後の解説<textarea id="proposedExplanation"></textarea></label>
+      <label>修正理由<textarea id="proposalReason"></textarea></label>
+      <div class="proposal-note">提案は本番JSONへ直接反映されません。GitHub Pull Requestとして提出し、管理者がMergeした場合のみ反映されます。</div>
+      <div class="actions">
+        <button id="submitProposalBtn" type="button" class="primary">GitHubでPR提案を作成する</button>
+        <button id="copyProposalBtn" type="button" class="secondary">提案内容をコピー</button>
+        <button id="cancelProposalBtn" type="button" class="ghost">問題に戻る</button>
+      </div>
+      <pre id="proposalOutput" class="proposal-output hidden"></pre>
+    </section>
+
+    <section id="result" class="card hidden">
+      <h2>結果</h2>
+      <div id="resultSummary"></div>
+      <div id="resultDetails"></div>
+      <button id="retryBtn" type="button" class="primary">もう一度解く</button>
+      <button id="resultBackBtn" type="button" class="secondary">設定に戻る</button>
+    </section>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>

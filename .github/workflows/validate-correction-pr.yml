@@ -1,0 +1,23 @@
+name: Validate answer and explanation PR
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "data/**/*.json"
+
+jobs:
+  validate-answer-explanation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch main
+        run: git fetch origin main
+
+      - name: Fail when fields other than answer/explanation changed
+        run: python tools/validate_answer_explanation_diff.py

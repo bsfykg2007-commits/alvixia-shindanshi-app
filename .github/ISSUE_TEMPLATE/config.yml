@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussionで相談する
+    url: https://github.com/bsfykg2007-commits/alvixia-shindanshi-app/discussions
+    about: 仕様変更や大きめの機能追加はDiscussionで事前相談してください。

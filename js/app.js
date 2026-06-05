@@ -3,6 +3,7 @@ const $ = id => document.getElementById(id);
 const labels = ["ア","イ","ウ","エ","オ","カ","キ","ク","ケ","コ"];
 const labelOf = i => labels[i] || String(i + 1);
 const STORE_KEY = "alvixiaShindanshiLearning.v1";
+const GITHUB_REPO = "https://github.com/bsfykg2007-commits/alvixia-shindanshi-app";
 
 function cleanDisplayText(s){
   return String(s ?? "").replace(/[\s\u3000]+[0-9０-９]+[\s\u3000]*$/g, "").trim();
@@ -32,6 +33,10 @@ async function init(){
   $("nextBtn").onclick = next;
   $("finishBtn").onclick = finish;
   $("reviewBtn").onclick = toggleReview;
+  $("proposeBtn").onclick = showProposalForm;
+  $("submitProposalBtn").onclick = submitProposal;
+  $("copyProposalBtn").onclick = copyProposal;
+  $("cancelProposalBtn").onclick = hideProposalForm;
   $("backBtn").onclick = backSetup;
   $("retryBtn").onclick = () => start(false);
   $("resultBackBtn").onclick = backSetup;
@@ -66,6 +71,7 @@ async function start(fromResume){
 
   if (practice === "wrong") questions = questions.filter(q => (qStat(q.id).wrong || 0) > 0 && qStat(q.id).lastCorrect !== true);
   if (practice === "review") questions = questions.filter(q => qStat(q.id).review === true);
+  if (practice === "random") questions = shuffle(questions);
 
   if (!questions.length) {
     alert(practice === "all" ? "この年度・科目はまだ問題データが未投入です。" : "対象になる問題がまだありません。");
@@ -76,6 +82,15 @@ async function start(fromResume){
   saveActiveSession();
   showQuiz();
   render();
+}
+
+function shuffle(items){
+  const arr = [...items];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
 async function resumeSession(){
@@ -102,6 +117,7 @@ async function resumeSession(){
 function showQuiz(){
   $("setup").classList.add("hidden");
   $("result").classList.add("hidden");
+  $("proposal").classList.add("hidden");
   $("quiz").classList.remove("hidden");
 }
 
@@ -249,6 +265,111 @@ function showFeedback(q){
   $("feedback").classList.remove("hidden");
 }
 
+function showProposalForm(){
+  const q = questions[current];
+  if (!q) return;
+  saveCurrentSelection();
+  $("quiz").classList.add("hidden");
+  $("setup").classList.add("hidden");
+  $("result").classList.add("hidden");
+  $("proposal").classList.remove("hidden");
+
+  const answerOptions = (q.choices || [])
+    .map((choice, i) => `<option value="${i}" ${q.answer === i ? "selected" : ""}>${labelOf(i)}：${escapeHtml(cleanDisplayText(choice)).slice(0, 80)}</option>`)
+    .join("");
+  $("proposedAnswer").innerHTML = answerOptions || `<option value="${q.answer || 0}">${labelOf(q.answer || 0)}</option>`;
+  $("proposalReadonly").innerHTML = `
+    <dl class="proposal-readonly">
+      <div><dt>年度</dt><dd>${escapeHtml(q.year || "")}</dd></div>
+      <div><dt>科目</dt><dd>${escapeHtml(q.subject || "")}</dd></div>
+      <div><dt>問題番号</dt><dd>${escapeHtml(q.no || "")}</dd></div>
+      <div><dt>questionId</dt><dd>${escapeHtml(q.id || "")}</dd></div>
+      <div><dt>現在の解答</dt><dd>${q.allCorrect ? "全員正解" : `${labelOf(q.answer)}（answer: ${q.answer}）`}</dd></div>
+    </dl>
+    <h3>問題文（表示のみ）</h3>
+    <pre class="readonly-block">${escapeHtml(cleanDisplayText(q.question || ""))}</pre>
+    <h3>選択肢（表示のみ）</h3>
+    <ol class="readonly-choices">${(q.choices || []).map((choice, i) => `<li><strong>${labelOf(i)}</strong> ${escapeHtml(cleanDisplayText(choice))}</li>`).join("")}</ol>`;
+  const currentExplanation = proposalExplanationText(q.explanation || {});
+  $("currentExplanation").value = currentExplanation;
+  $("proposedExplanation").value = currentExplanation;
+  $("proposalReason").value = "";
+  $("referenceUrl").value = "";
+  $("proposalOutput").classList.add("hidden");
+  $("proposalOutput").textContent = "";
+}
+
+function hideProposalForm(){
+  $("proposal").classList.add("hidden");
+  $("quiz").classList.remove("hidden");
+}
+
+function proposalExplanationText(ex){
+  return [
+    ex.summary ? `summary:\n${ex.summary}` : "",
+    ex.whyCorrect ? `whyCorrect:\n${ex.whyCorrect}` : "",
+    ex.whyOthersWrong ? `whyOthersWrong:\n${ex.whyOthersWrong}` : "",
+    Array.isArray(ex.choiceReasons) ? `choiceReasons:\n${ex.choiceReasons.join("\n")}` : "",
+    ex.examPoint ? `examPoint:\n${ex.examPoint}` : "",
+    ex.practicalNote ? `practicalNote:\n${ex.practicalNote}` : ""
+  ].filter(Boolean).join("\n\n");
+}
+
+function buildProposalMarkdown(){
+  const q = questions[current];
+  const proposedAnswer = Number($("proposedAnswer").value);
+  const proposedExplanation = $("proposedExplanation").value.trim();
+  const reason = $("proposalReason").value.trim();
+  const referenceUrl = $("referenceUrl").value.trim();
+  return `## 解答・解説修正提案
+
+### 対象
+- year: ${q.year || ""}
+- subject: ${q.subject || ""}
+- questionId: ${q.id || ""}
+- no: ${q.no || ""}
+
+### 変更可能項目
+- answer: ${q.answer} -> ${proposedAnswer}
+- explanation: 下記の内容へ修正
+
+### 修正後の解説
+\`\`\`
+${proposedExplanation}
+\`\`\`
+
+### 修正理由
+${reason || "未入力"}
+
+### 参考URL
+${referenceUrl || "なし"}
+
+### 変更不可項目
+question / choices / year / subject / questionId は変更しないでください。`;
+}
+
+function submitProposal(){
+  const body = buildProposalMarkdown();
+  $("proposalOutput").textContent = body;
+  $("proposalOutput").classList.remove("hidden");
+  const q = questions[current];
+  const title = encodeURIComponent(`解答・解説修正提案: ${q.id || q.no || ""}`);
+  const url = `${GITHUB_REPO}/issues/new?title=${title}&body=${encodeURIComponent(body)}`;
+  window.open(url, "_blank", "noopener");
+}
+
+async function copyProposal(){
+  const body = buildProposalMarkdown();
+  $("proposalOutput").textContent = body;
+  $("proposalOutput").classList.remove("hidden");
+  try {
+    await navigator.clipboard.writeText(body);
+    alert("提案内容をコピーしました。GitHubのPR本文に貼り付けてください。");
+  } catch {
+    alert("コピーできませんでした。下の提案内容を選択してコピーしてください。");
+  }
+}
+
 function prev(){ saveCurrentSelection(); if (current > 0) { current--; render(); } }
 function next(){ saveCurrentSelection(); if (current < questions.length - 1) { current++; render(); } }
 
@@ -293,6 +414,7 @@ function backSetup(){
   saveCurrentSelection();
   $("quiz").classList.add("hidden");
   $("result").classList.add("hidden");
+  $("proposal").classList.add("hidden");
   $("setup").classList.remove("hidden");
   refreshLearningStats();
 }
@@ -314,12 +436,26 @@ function refreshLearningStats(){
   const correct = rows.reduce((s, r) => s + (r.correct || 0), 0);
   const wrongNow = rows.filter(r => r.wrong > 0 && r.lastCorrect !== true).length;
   const review = rows.filter(r => r.review).length;
-  $("learningStats").innerHTML = `<div class="stat-grid"><div><strong>${attempts}</strong><span>解答数</span></div><div><strong>${attempts ? Math.round(correct / attempts * 100) : 0}%</strong><span>正答率</span></div><div><strong>${wrongNow}</strong><span>間違い復習</span></div><div><strong>${review}</strong><span>要復習</span></div></div>${weaknessHtml()}`;
+  $("learningStats").innerHTML = `<div class="stat-grid"><div><strong>${attempts}</strong><span>解答数</span></div><div><strong>${attempts ? Math.round(correct / attempts * 100) : 0}%</strong><span>正答率</span></div><div><strong>${wrongNow}</strong><span>間違い復習</span></div><div><strong>${review}</strong><span>要復習</span></div></div>${accuracyHtml("subject")}${accuracyHtml("year")}${weaknessHtml()}`;
+}
+
+function accuracyHtml(kind){
+  const rows = Object.values(loadStore().questions).filter(r => r.attempts);
+  const by = {};
+  rows.forEach(r => {
+    const key = kind === "year" ? (r.year || "年度未設定") : (r.subject || "未分類");
+    by[key] ??= { attempts: 0, correct: 0 };
+    by[key].attempts += r.attempts || 0;
+    by[key].correct += r.correct || 0;
+  });
+  const entries = Object.entries(by).sort((a, b) => String(a[0]).localeCompare(String(b[0]), "ja"));
+  if (!entries.length) return "";
+  return `<div class="weakness"><h3>${kind === "year" ? "年度別正答率" : "科目別正答率"}</h3>${entries.map(([key, v]) => `<p><span class="badge">${escapeHtml(key)}</span>${Math.round(v.correct / v.attempts * 100)}%（${v.correct}/${v.attempts}回）</p>`).join("")}</div>`;
 }
 
 function weaknessHtml(scopeQuestions){
   const store = loadStore();
-  const rows = scopeQuestions ? scopeQuestions.map(q => ({...store.questions[q.id], subject: q.subject })).filter(r => r.id) : Object.values(store.questions);
+  const rows = scopeQuestions ? scopeQuestions.map(q => ({...store.questions[q.id], subject: q.subject, year: q.year })).filter(r => r.id) : Object.values(store.questions);
   const by = {};
   rows.forEach(r => {
     const key = r.subject || "未分類";
