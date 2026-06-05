@@ -1,4 +1,4 @@
-name: Deploy to Xserver
+name: Deploy ALVIXIA to Xserver
 
 on:
   push:
@@ -6,25 +6,29 @@ on:
       - main
 
 jobs:
-  ftp-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to Xserver via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy to Xserver
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /alvixia.jp/public_html/shindanshi/
+          server: ${{ secrets.XSERVER_HOST }}
+          username: ${{ secrets.XSERVER_USER }}
+          password: ${{ secrets.XSERVER_PASSWORD }}
+          port: ${{ secrets.XSERVER_PORT }}
+          local_path: './'
+          remote_path: ${{ secrets.XSERVER_REMOTE_PATH }}
+          sftp_only: true
+          delete_remote_files: false
           exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            AGENTS.md
-            README.md
+            .git*
             .github/**
+            README*
+            blog/**
+            wp-admin/**
+            wp-content/**
+            wp-includes/**
