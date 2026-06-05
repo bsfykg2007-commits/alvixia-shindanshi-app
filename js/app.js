@@ -1,4 +1,4 @@
-let manifest, questions = [], current = 0, answers = {}, checked = {}, mode = "instant";
+﻿let manifest, questions = [], current = 0, answers = {}, checked = {}, mode = "instant";
 const $ = id => document.getElementById(id);
 const labels = ["ア","イ","ウ","エ","オ","カ","キ"];
 const labelOf = i => labels[i] || String(i + 1);
@@ -10,7 +10,7 @@ function cleanDisplayText(s){
 }
 
 async function init(){
-  manifest = await fetch("data/manifest.json").then(r => r.json());
+  manifest = await fetch(`data/manifest.json?v=${Date.now()}`).then(r => r.json());
   manifest.years.forEach(y => $("yearSelect").add(new Option(y.name, y.id)));
   fillSubjects();
 
@@ -44,7 +44,7 @@ async function start(){
   const targets = subjectId === "all" ? year.subjects : year.subjects.filter(s => s.id === subjectId);
 
   for (const s of targets) {
-    const arr = await fetch(`data/${yearId}/${s.id}.json`).then(r => r.json()).catch(() => []);
+    const arr = await fetch(`data/${yearId}/${s.id}.json?v=${Date.now()}`).then(r => r.json()).catch(() => []);
     questions.push(...arr.filter(q => q.included !== false));
   }
 
