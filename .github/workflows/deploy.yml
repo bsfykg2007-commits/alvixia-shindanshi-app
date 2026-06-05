@@ -1,4 +1,4 @@
-name: Deploy ALVIXIA to Xserver
+name: Deploy Shindanshi App to Xserver
 
 on:
   push:
@@ -16,19 +16,11 @@ jobs:
       - name: Deploy to Xserver
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
-          server: ${{ secrets.XSERVER_HOST }}
-          username: ${{ secrets.XSERVER_USER }}
-          password: ${{ secrets.XSERVER_PASSWORD }}
-          port: ${{ secrets.XSERVER_PORT }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
           local_path: './'
-          remote_path: ${{ secrets.XSERVER_REMOTE_PATH }}
+          remote_path: ${{ secrets.FTP_REMOTE_PATH }}
           sftp_only: true
           delete_remote_files: false
-          exclude: |
-            .git*
-            .github/**
-            README*
-            blog/**
-            wp-admin/**
-            wp-content/**
-            wp-includes/**
