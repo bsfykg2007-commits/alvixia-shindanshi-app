@@ -1,0 +1,154 @@
+{
+  "years": [
+    {
+      "year": "R07",
+      "yearLabel": "令和7年度",
+      "cases": [
+        { "year": "R07", "yearLabel": "令和7年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "r07_case1.json" },
+        { "year": "R07", "yearLabel": "令和7年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "r07_case2.json" },
+        { "year": "R07", "yearLabel": "令和7年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "r07_case3.json" },
+        { "year": "R07", "yearLabel": "令和7年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "r07_case4.json" }
+      ]
+    },
+    {
+      "year": "R06",
+      "yearLabel": "令和6年度",
+      "cases": [
+        { "year": "R06", "yearLabel": "令和6年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "r06_case1.json" },
+        { "year": "R06", "yearLabel": "令和6年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "r06_case2.json" },
+        { "year": "R06", "yearLabel": "令和6年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "r06_case3.json" },
+        { "year": "R06", "yearLabel": "令和6年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "r06_case4.json" }
+      ]
+    },
+    {
+      "year": "R05",
+      "yearLabel": "令和5年度",
+      "cases": [
+        { "year": "R05", "yearLabel": "令和5年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "r05_case1.json" },
+        { "year": "R05", "yearLabel": "令和5年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "r05_case2.json" },
+        { "year": "R05", "yearLabel": "令和5年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "r05_case3.json" },
+        { "year": "R05", "yearLabel": "令和5年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "r05_case4.json" }
+      ]
+    },
+    {
+      "year": "R04",
+      "yearLabel": "令和4年度",
+      "cases": [
+        { "year": "R04", "yearLabel": "令和4年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "r04_case1.json" },
+        { "year": "R04", "yearLabel": "令和4年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "r04_case2.json" },
+        { "year": "R04", "yearLabel": "令和4年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "r04_case3.json" },
+        { "year": "R04", "yearLabel": "令和4年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "r04_case4.json" }
+      ]
+    },
+    {
+      "year": "R03",
+      "yearLabel": "令和3年度",
+      "cases": [
+        { "year": "R03", "yearLabel": "令和3年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "r03_case1.json" },
+        { "year": "R03", "yearLabel": "令和3年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "r03_case2.json" },
+        { "year": "R03", "yearLabel": "令和3年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "r03_case3.json" },
+        { "year": "R03", "yearLabel": "令和3年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "r03_case4.json" }
+      ]
+    },
+    {
+      "year": "R02",
+      "yearLabel": "令和2年度",
+      "cases": [
+        { "year": "R02", "yearLabel": "令和2年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "r02_case1.json" },
+        { "year": "R02", "yearLabel": "令和2年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "r02_case2.json" },
+        { "year": "R02", "yearLabel": "令和2年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "r02_case3.json" },
+        { "year": "R02", "yearLabel": "令和2年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "r02_case4.json" }
+      ]
+    },
+    {
+      "year": "R01",
+      "yearLabel": "令和元年度",
+      "cases": [
+        { "year": "R01", "yearLabel": "令和元年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "r01_case1.json" },
+        { "year": "R01", "yearLabel": "令和元年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "r01_case2.json" },
+        { "year": "R01", "yearLabel": "令和元年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "r01_case3.json" },
+        { "year": "R01", "yearLabel": "令和元年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "r01_case4.json" }
+      ]
+    },
+    {
+      "year": "H30",
+      "yearLabel": "平成30年度",
+      "cases": [
+        { "year": "H30", "yearLabel": "平成30年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h30_case1.json" },
+        { "year": "H30", "yearLabel": "平成30年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h30_case2.json" },
+        { "year": "H30", "yearLabel": "平成30年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h30_case3.json" },
+        { "year": "H30", "yearLabel": "平成30年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h30_case4.json" }
+      ]
+    },
+    {
+      "year": "H29",
+      "yearLabel": "平成29年度",
+      "cases": [
+        { "year": "H29", "yearLabel": "平成29年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h29_case1.json" },
+        { "year": "H29", "yearLabel": "平成29年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h29_case2.json" },
+        { "year": "H29", "yearLabel": "平成29年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h29_case3.json" },
+        { "year": "H29", "yearLabel": "平成29年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h29_case4.json" }
+      ]
+    },
+    {
+      "year": "H28",
+      "yearLabel": "平成28年度",
+      "cases": [
+        { "year": "H28", "yearLabel": "平成28年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h28_case1.json" },
+        { "year": "H28", "yearLabel": "平成28年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h28_case2.json" },
+        { "year": "H28", "yearLabel": "平成28年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h28_case3.json" },
+        { "year": "H28", "yearLabel": "平成28年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h28_case4.json" }
+      ]
+    },
+    {
+      "year": "H27",
+      "yearLabel": "平成27年度",
+      "cases": [
+        { "year": "H27", "yearLabel": "平成27年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h27_case1.json" },
+        { "year": "H27", "yearLabel": "平成27年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h27_case2.json" },
+        { "year": "H27", "yearLabel": "平成27年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h27_case3.json" },
+        { "year": "H27", "yearLabel": "平成27年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h27_case4.json" }
+      ]
+    },
+    {
+      "year": "H26",
+      "yearLabel": "平成26年度",
+      "cases": [
+        { "year": "H26", "yearLabel": "平成26年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h26_case1.json" },
+        { "year": "H26", "yearLabel": "平成26年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h26_case2.json" },
+        { "year": "H26", "yearLabel": "平成26年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h26_case3.json" },
+        { "year": "H26", "yearLabel": "平成26年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h26_case4.json" }
+      ]
+    },
+    {
+      "year": "H25",
+      "yearLabel": "平成25年度",
+      "cases": [
+        { "year": "H25", "yearLabel": "平成25年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h25_case1.json" },
+        { "year": "H25", "yearLabel": "平成25年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h25_case2.json" },
+        { "year": "H25", "yearLabel": "平成25年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h25_case3.json" },
+        { "year": "H25", "yearLabel": "平成25年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h25_case4.json" }
+      ]
+    },
+    {
+      "year": "H24",
+      "yearLabel": "平成24年度",
+      "cases": [
+        { "year": "H24", "yearLabel": "平成24年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h24_case1.json" },
+        { "year": "H24", "yearLabel": "平成24年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h24_case2.json" },
+        { "year": "H24", "yearLabel": "平成24年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h24_case3.json" },
+        { "year": "H24", "yearLabel": "平成24年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h24_case4.json" }
+      ]
+    },
+    {
+      "year": "H23",
+      "yearLabel": "平成23年度",
+      "cases": [
+        { "year": "H23", "yearLabel": "平成23年度", "caseId": "case1", "caseLabel": "事例Ⅰ", "file": "h23_case1.json" },
+        { "year": "H23", "yearLabel": "平成23年度", "caseId": "case2", "caseLabel": "事例Ⅱ", "file": "h23_case2.json" },
+        { "year": "H23", "yearLabel": "平成23年度", "caseId": "case3", "caseLabel": "事例Ⅲ", "file": "h23_case3.json" },
+        { "year": "H23", "yearLabel": "平成23年度", "caseId": "case4", "caseLabel": "事例Ⅳ", "file": "h23_case4.json" }
+      ]
+    }
+  ]
+}

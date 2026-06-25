@@ -1,0 +1,12 @@
+
+/* 選択肢解説の番号を消す補助CSS */
+.feedback ol,
+.feedback .reason-list ol {
+  list-style: none;
+  padding-left: 0;
+}
+.feedback li,
+.feedback .choice-reason {
+  margin: 0.65em 0;
+  line-height: 1.8;
+}

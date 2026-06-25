@@ -1,0 +1,52 @@
+[
+  {
+    "year": "h28",
+    "questions": 0,
+    "needsAnswerReview": 0
+  },
+  {
+    "year": "h29",
+    "questions": 0,
+    "needsAnswerReview": 0
+  },
+  {
+    "year": "h30",
+    "questions": 0,
+    "needsAnswerReview": 0
+  },
+  {
+    "year": "r01",
+    "questions": 150,
+    "needsAnswerReview": 150
+  },
+  {
+    "year": "r02",
+    "questions": 147,
+    "needsAnswerReview": 147
+  },
+  {
+    "year": "r03",
+    "questions": 154,
+    "needsAnswerReview": 154
+  },
+  {
+    "year": "r04",
+    "questions": 156,
+    "needsAnswerReview": 156
+  },
+  {
+    "year": "r05",
+    "questions": 136,
+    "needsAnswerReview": 136
+  },
+  {
+    "year": "r06",
+    "questions": 150,
+    "needsAnswerReview": 150
+  },
+  {
+    "year": "r07",
+    "questions": 155,
+    "needsAnswerReview": 0
+  }
+]

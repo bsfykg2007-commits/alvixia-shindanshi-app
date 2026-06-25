@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alvixia.jp/shindanshi/sitemap.xml
