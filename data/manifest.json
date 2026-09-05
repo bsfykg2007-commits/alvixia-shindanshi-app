@@ -1,6 +1,16 @@
 {
   "years": [
     {
+      "id": "r08",
+      "name": "令和8年度",
+      "subjects": [
+        {
+          "id": "keizai",
+          "name": "経済学・経済政策"
+        }
+      ]
+    },
+    {
       "id": "r07",
       "name": "令和7年度",
       "subjects": [
