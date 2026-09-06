@@ -7,6 +7,30 @@
         {
           "id": "keizai",
           "name": "経済学・経済政策"
+        },
+        {
+          "id": "zaimu",
+          "name": "財務・会計"
+        },
+        {
+          "id": "kigyou",
+          "name": "企業経営理論"
+        },
+        {
+          "id": "unei",
+          "name": "運営管理"
+        },
+        {
+          "id": "houmu",
+          "name": "経営法務"
+        },
+        {
+          "id": "jouhou",
+          "name": "経営情報システム"
+        },
+        {
+          "id": "chusho",
+          "name": "中小企業経営・政策"
         }
       ]
     },
